@@ -5,6 +5,7 @@ import {
   timestamp,
   integer,
   jsonb,
+  real,
   index,
 } from "drizzle-orm/pg-core";
 
@@ -57,6 +58,10 @@ export const projects = pgTable(
     // Workflow
     status: text("status").notNull().default("draft"), // 'draft' | 'submitted' | 'approved' | 'rejected'
     adminFeedback: text("admin_feedback"),
+
+    // Geolocation (set on approval via Nominatim geocoding)
+    latitude: real("latitude"),
+    longitude: real("longitude"),
 
     // Media
     thumbnailUrl: text("thumbnail_url"),

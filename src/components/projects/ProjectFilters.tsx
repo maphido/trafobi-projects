@@ -31,8 +31,36 @@ export function ProjectFilters() {
     router.push(`${pathname}?${params.toString()}`);
   }
 
+  const view = searchParams.get("view") || "grid";
+
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap items-center gap-3">
+      {/* View toggle */}
+      <div className="flex rounded-lg border border-gray-300 overflow-hidden">
+        <button
+          onClick={() => setFilter("view", "grid")}
+          className={`px-3 py-1.5 text-sm font-medium transition-colors ${
+            view !== "map"
+              ? "bg-primary text-white"
+              : "bg-white text-gray-600 hover:bg-gray-50"
+          }`}
+          title={t("gridView")}
+        >
+          ▦
+        </button>
+        <button
+          onClick={() => setFilter("view", "map")}
+          className={`px-3 py-1.5 text-sm font-medium transition-colors ${
+            view === "map"
+              ? "bg-primary text-white"
+              : "bg-white text-gray-600 hover:bg-gray-50"
+          }`}
+          title={t("mapView")}
+        >
+          ◉
+        </button>
+      </div>
+
       <select
         value={searchParams.get("country") || ""}
         onChange={(e) => setFilter("country", e.target.value)}

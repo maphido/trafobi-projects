@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { projects, users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { adminReviewSchema } from "@/lib/validation";
+import { geocode } from "@/lib/geocode";
 
 export async function POST(request: NextRequest) {
   const session = await auth();
@@ -58,6 +59,17 @@ export async function POST(request: NextRequest) {
   }
 
   if (action === "approve") {
+    // Geocode city+country (non-blocking — approval succeeds even if geocoding fails)
+    let latitude: number | null = null;
+    let longitude: number | null = null;
+    if (project.city && project.country) {
+      const coords = await geocode(project.city, project.country);
+      if (coords) {
+        latitude = coords.latitude;
+        longitude = coords.longitude;
+      }
+    }
+
     const [updated] = await db
       .update(projects)
       .set({
@@ -65,6 +77,8 @@ export async function POST(request: NextRequest) {
         approvedAt: new Date(),
         updatedAt: new Date(),
         adminFeedback: null,
+        latitude,
+        longitude,
       })
       .where(eq(projects.id, projectId))
       .returning();

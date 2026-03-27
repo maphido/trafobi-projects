@@ -33,7 +33,9 @@
     "allTypes": "Alle Typen",
     "allTopics": "Alle Themen",
     "allPhases": "Alle Phasen",
-    "loadMore": "Mehr laden"
+    "loadMore": "Mehr laden",
+    "gridView": "Listenansicht",
+    "mapView": "Kartenansicht"
   },
   "auth": {
     "loginTitle": "Anmelden",
