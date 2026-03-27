@@ -6,7 +6,7 @@ Project showcase for transformative higher education projects across Europe.
 
 | What | Where |
 |------|-------|
-| **Live** | https://projects.transformative-bildung.org |
+| **Live** | https://projekte.transformative-bildung.org |
 | **VPS** | `/opt/trafobi-projects` on 217.154.164.181 |
 | **Local dev** | `npm run dev` (port 3000), DB on localhost:5434 |
 | **Deploy** | `cd /opt/trafobi-projects && sudo git pull && sudo docker compose --env-file .env.production up -d --build` |
