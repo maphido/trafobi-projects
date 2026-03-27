@@ -164,7 +164,8 @@ export function useProjectForm() {
     dispatch({ type: "SET_STEP", step: Math.max(state.step - 1, 0) });
   }, [state.step]);
 
-  const saveDraft = useCallback(async () => {
+  // Returns the project ID on success, null on failure
+  const saveDraft = useCallback(async (): Promise<string | null> => {
     dispatch({ type: "SET_SAVING", saving: true });
     dispatch({ type: "SET_ERROR", error: null });
 
@@ -210,31 +211,28 @@ export function useProjectForm() {
       if (!state.projectId) {
         dispatch({ type: "SET_PROJECT_ID", id: project.id });
       }
+      return project.id;
     } catch (err) {
       dispatch({
         type: "SET_ERROR",
         error: err instanceof Error ? err.message : "Failed to save",
       });
+      return null;
     } finally {
       dispatch({ type: "SET_SAVING", saving: false });
     }
   }, [state.data, state.projectId]);
 
   const submitForReview = useCallback(async () => {
-    if (!state.projectId) {
-      // Save first if not yet saved
-      await saveDraft();
-    }
+    // Always save first to get a project ID
+    const savedId = await saveDraft();
+    const pid = savedId || state.projectId;
+    if (!pid) return false;
 
     dispatch({ type: "SET_SUBMITTING", submitting: true });
     dispatch({ type: "SET_ERROR", error: null });
 
     try {
-      // Ensure we have a projectId (might have been set by saveDraft)
-      const pid =
-        state.projectId ||
-        JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}").projectId;
-      if (!pid) throw new Error("Save the project first");
 
       const res = await fetch(`/api/projects/${pid}`, {
         method: "PUT",
