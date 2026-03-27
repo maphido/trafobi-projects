@@ -29,7 +29,7 @@ export const projectCreateSchema = z.object({
   city: z.string().max(100).nullish(),
   topics: z
     .array(z.enum(TOPICS as unknown as [string, ...string[]]))
-    .max(5)
+    .max(14)
     .default([]),
   studyPhase: z
     .enum(STUDY_PHASES as unknown as [string, ...string[]])
