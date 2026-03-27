@@ -1,0 +1,136 @@
+{
+  "common": {
+    "appName": "Transformative Bildung – Projekte",
+    "loading": "Laden...",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "back": "Zurück",
+    "next": "Weiter",
+    "submit": "Einreichen",
+    "search": "Suchen",
+    "noResults": "Keine Ergebnisse gefunden"
+  },
+  "nav": {
+    "home": "Projekte",
+    "submit": "Projekt einreichen",
+    "dashboard": "Meine Projekte",
+    "admin": "Admin",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "logout": "Abmelden"
+  },
+  "home": {
+    "title": "Transformationsprojekte in der Hochschulbildung",
+    "subtitle": "Entdecken Sie inspirierende Projekte, die Hochschulbildung in Europa transformieren",
+    "filterByCountry": "Land",
+    "filterByType": "Hochschultyp",
+    "filterByTopics": "Themen",
+    "filterByPhase": "Studienphase",
+    "filterByLanguage": "Sprache",
+    "allCountries": "Alle Länder",
+    "allTypes": "Alle Typen",
+    "allTopics": "Alle Themen",
+    "allPhases": "Alle Phasen",
+    "loadMore": "Mehr laden"
+  },
+  "auth": {
+    "loginTitle": "Anmelden",
+    "registerTitle": "Konto erstellen",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "fullName": "Vollständiger Name",
+    "loginButton": "Anmelden",
+    "registerButton": "Registrieren",
+    "noAccount": "Noch kein Konto?",
+    "hasAccount": "Bereits ein Konto?",
+    "loginLink": "Jetzt anmelden",
+    "registerLink": "Jetzt registrieren",
+    "loginError": "E-Mail oder Passwort ungültig",
+    "registerError": "Registrierung fehlgeschlagen"
+  },
+  "project": {
+    "by": "von",
+    "submittedOn": "Eingereicht am",
+    "topics": "Themen",
+    "studyPhase": "Studienphase",
+    "institutionType": "Hochschultyp",
+    "readMore": "Mehr erfahren",
+    "description": "Beschreibung",
+    "impact": "Wirkung & Ergebnisse",
+    "challenges": "Herausforderungen",
+    "tips": "Tipps für andere",
+    "links": "Links & Ressourcen",
+    "media": "Medien"
+  },
+  "submit": {
+    "title": "Projekt einreichen",
+    "stepAbout": "Über Sie",
+    "stepBasics": "Grundlagen",
+    "stepStory": "Die Geschichte",
+    "stepResults": "Ergebnisse",
+    "stepLinks": "Links & Medien",
+    "saveDraft": "Als Entwurf speichern",
+    "submitReview": "Zur Prüfung einreichen",
+    "projectTitle": "Projekttitel",
+    "institution": "Institution",
+    "institutionName": "Name der Institution",
+    "country": "Land",
+    "city": "Stadt",
+    "language": "Projektsprache",
+    "topicsLabel": "Themen (mehrere auswählen)",
+    "studyPhaseLabel": "Studienphase",
+    "summary": "Kurzbeschreibung",
+    "summaryHint": "Eine kurze Zusammenfassung für die Projektübersicht (2-3 Sätze)",
+    "descriptionLabel": "Die ganze Geschichte",
+    "descriptionHint": "Was ist das Projekt? Warum wurde es gestartet? Wie funktioniert es? (Markdown wird unterstützt)",
+    "impactLabel": "Wirkung & Ergebnisse",
+    "impactHint": "Welche Ergebnisse hat das Projekt erzielt?",
+    "challengesLabel": "Herausforderungen",
+    "challengesHint": "Welche Herausforderungen sind aufgetreten?",
+    "tipsLabel": "Tipps für andere",
+    "tipsHint": "Was würden Sie anderen empfehlen, die ein ähnliches Projekt starten möchten?",
+    "linksLabel": "Externe Links",
+    "addLink": "Link hinzufügen",
+    "linkUrl": "URL",
+    "linkLabel": "Bezeichnung"
+  },
+  "dashboard": {
+    "title": "Meine Projekte",
+    "empty": "Sie haben noch keine Projekte. Reichen Sie Ihr erstes Projekt ein!",
+    "status": {
+      "draft": "Entwurf",
+      "submitted": "Eingereicht",
+      "approved": "Genehmigt",
+      "rejected": "Abgelehnt"
+    },
+    "adminFeedback": "Feedback vom Admin"
+  },
+  "admin": {
+    "title": "Verwaltung",
+    "reviewQueue": "Prüfungswarteschlange",
+    "noSubmissions": "Keine Einreichungen zur Prüfung",
+    "approve": "Genehmigen",
+    "reject": "Ablehnen",
+    "feedbackLabel": "Feedback (erforderlich bei Ablehnung)",
+    "feedbackPlaceholder": "Geben Sie dem Autor Feedback..."
+  },
+  "institutionTypes": {
+    "university": "Universität",
+    "fh": "Fachhochschule",
+    "art_school": "Kunst-/Musikhochschule",
+    "other": "Sonstige"
+  },
+  "studyPhases": {
+    "bachelor": "Bachelor",
+    "master": "Master",
+    "all": "Alle Phasen"
+  },
+  "footer": {
+    "tagline": "Eine Initiative der Zukunftsallianz für Transformative Bildung",
+    "mainSite": "Hauptseite",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz"
+  }
+}

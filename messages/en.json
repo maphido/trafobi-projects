@@ -1,0 +1,136 @@
+{
+  "common": {
+    "appName": "Transformative Education – Projects",
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "search": "Search",
+    "noResults": "No results found"
+  },
+  "nav": {
+    "home": "Projects",
+    "submit": "Submit Project",
+    "dashboard": "My Projects",
+    "admin": "Admin",
+    "login": "Log In",
+    "register": "Register",
+    "logout": "Log Out"
+  },
+  "home": {
+    "title": "Transformation Projects in Higher Education",
+    "subtitle": "Discover inspiring projects transforming higher education across Europe",
+    "filterByCountry": "Country",
+    "filterByType": "Institution Type",
+    "filterByTopics": "Topics",
+    "filterByPhase": "Study Phase",
+    "filterByLanguage": "Language",
+    "allCountries": "All Countries",
+    "allTypes": "All Types",
+    "allTopics": "All Topics",
+    "allPhases": "All Phases",
+    "loadMore": "Load More"
+  },
+  "auth": {
+    "loginTitle": "Log In",
+    "registerTitle": "Create Account",
+    "email": "Email",
+    "password": "Password",
+    "fullName": "Full Name",
+    "loginButton": "Log In",
+    "registerButton": "Register",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "loginLink": "Log in now",
+    "registerLink": "Register now",
+    "loginError": "Invalid email or password",
+    "registerError": "Registration failed"
+  },
+  "project": {
+    "by": "by",
+    "submittedOn": "Submitted on",
+    "topics": "Topics",
+    "studyPhase": "Study Phase",
+    "institutionType": "Institution Type",
+    "readMore": "Read More",
+    "description": "Description",
+    "impact": "Impact & Results",
+    "challenges": "Challenges",
+    "tips": "Tips for Others",
+    "links": "Links & Resources",
+    "media": "Media"
+  },
+  "submit": {
+    "title": "Submit a Project",
+    "stepAbout": "About You",
+    "stepBasics": "Basics",
+    "stepStory": "The Story",
+    "stepResults": "Results",
+    "stepLinks": "Links & Media",
+    "saveDraft": "Save as Draft",
+    "submitReview": "Submit for Review",
+    "projectTitle": "Project Title",
+    "institution": "Institution",
+    "institutionName": "Institution Name",
+    "country": "Country",
+    "city": "City",
+    "language": "Project Language",
+    "topicsLabel": "Topics (select multiple)",
+    "studyPhaseLabel": "Study Phase",
+    "summary": "Summary",
+    "summaryHint": "A brief summary for the project overview (2-3 sentences)",
+    "descriptionLabel": "The Full Story",
+    "descriptionHint": "What is the project? Why was it started? How does it work? (Markdown supported)",
+    "impactLabel": "Impact & Results",
+    "impactHint": "What results has the project achieved?",
+    "challengesLabel": "Challenges",
+    "challengesHint": "What challenges have you encountered?",
+    "tipsLabel": "Tips for Others",
+    "tipsHint": "What would you recommend to others starting a similar project?",
+    "linksLabel": "External Links",
+    "addLink": "Add Link",
+    "linkUrl": "URL",
+    "linkLabel": "Label"
+  },
+  "dashboard": {
+    "title": "My Projects",
+    "empty": "You don't have any projects yet. Submit your first project!",
+    "status": {
+      "draft": "Draft",
+      "submitted": "Submitted",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "adminFeedback": "Admin Feedback"
+  },
+  "admin": {
+    "title": "Administration",
+    "reviewQueue": "Review Queue",
+    "noSubmissions": "No submissions to review",
+    "approve": "Approve",
+    "reject": "Reject",
+    "feedbackLabel": "Feedback (required for rejection)",
+    "feedbackPlaceholder": "Provide feedback to the author..."
+  },
+  "institutionTypes": {
+    "university": "University",
+    "fh": "University of Applied Sciences",
+    "art_school": "Art/Music Academy",
+    "other": "Other"
+  },
+  "studyPhases": {
+    "bachelor": "Bachelor",
+    "master": "Master",
+    "all": "All Phases"
+  },
+  "footer": {
+    "tagline": "An initiative of the Alliance for Transformative Education",
+    "mainSite": "Main Site",
+    "imprint": "Imprint",
+    "privacy": "Privacy Policy"
+  }
+}
