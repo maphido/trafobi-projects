@@ -27,7 +27,7 @@ export function StepAboutYou({ data, setField }: Props) {
 
       <div>
         <label htmlFor="authorName" className="mb-1 block text-sm font-medium">
-          {t("institution")}
+          Name
         </label>
         <input
           id="authorName"
