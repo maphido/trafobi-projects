@@ -9,15 +9,18 @@ import { TOPIC_LABELS, COUNTRY_FLAGS } from "@/lib/constants";
 
 import "leaflet/dist/leaflet.css";
 
-// Fix Leaflet default marker icon paths (broken by bundlers)
-import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
+// Custom SVG marker icon (avoids bundler issues with Leaflet's default PNG icons)
+const markerSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 36" width="24" height="36">
+  <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#667eea"/>
+  <circle cx="12" cy="12" r="5" fill="white"/>
+</svg>`;
 
-L.Icon.Default.mergeOptions({
-  iconUrl: markerIcon.src,
-  iconRetinaUrl: markerIcon2x.src,
-  shadowUrl: markerShadow.src,
+const projectIcon = L.divIcon({
+  html: markerSvg,
+  className: "",
+  iconSize: [24, 36],
+  iconAnchor: [12, 36],
+  popupAnchor: [0, -36],
 });
 
 export interface MapProject {
@@ -60,6 +63,7 @@ export default function ProjectMap({ projects }: Props) {
           <Marker
             key={project.id}
             position={[project.latitude, project.longitude]}
+            icon={projectIcon}
           >
             <Popup maxWidth={280}>
               <div className="space-y-1.5">
