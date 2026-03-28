@@ -80,6 +80,8 @@
     "institutionName": "Name der Institution",
     "country": "Land",
     "city": "Stadt",
+    "address": "Adresse",
+    "addressHint": "Straße und Hausnummer (optional, für genaue Kartenposition)",
     "language": "Projektsprache",
     "topicsLabel": "Themen (mehrere auswählen)",
     "studyPhaseLabel": "Studienphase",

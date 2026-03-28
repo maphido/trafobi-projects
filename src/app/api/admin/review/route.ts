@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
     let latitude: number | null = null;
     let longitude: number | null = null;
     if (project.city && project.country) {
-      const coords = await geocode(project.city, project.country);
+      const coords = await geocode(project.city, project.country, project.address);
       if (coords) {
         latitude = coords.latitude;
         longitude = coords.longitude;

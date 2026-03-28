@@ -132,6 +132,20 @@ export function StepBasics({ data, setField }: Props) {
       </div>
 
       <div>
+        <label htmlFor="address" className="mb-1 block text-sm font-medium">
+          {t("address")}
+        </label>
+        <input
+          id="address"
+          type="text"
+          value={data.address}
+          onChange={(e) => setField("address", e.target.value)}
+          placeholder={t("addressHint")}
+          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+        />
+      </div>
+
+      <div>
         <label htmlFor="studyPhase" className="mb-1 block text-sm font-medium">
           {t("studyPhaseLabel")}
         </label>

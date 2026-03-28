@@ -50,6 +50,7 @@ export const projects = pgTable(
     institutionType: text("institution_type"), // 'university' | 'fh' | 'art_school' | 'other'
     country: text("country"),
     city: text("city"),
+    address: text("address"), // Street address for precise map placement
 
     // Classification
     topics: text("topics").array().default([]),

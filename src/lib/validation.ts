@@ -27,6 +27,7 @@ export const projectCreateSchema = z.object({
   institutionType: z.enum([...INSTITUTION_TYPES, "" as const]).nullish(),
   country: z.string().max(10).nullish(),
   city: z.string().max(100).nullish(),
+  address: z.string().max(200).nullish(),
   topics: z
     .array(z.enum(TOPICS as unknown as [string, ...string[]]))
     .max(14)

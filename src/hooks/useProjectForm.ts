@@ -16,6 +16,7 @@ export interface ProjectFormData {
   institutionType: string;
   country: string;
   city: string;
+  address: string;
   topics: string[];
   studyPhase: string;
 
@@ -64,6 +65,7 @@ const INITIAL_DATA: ProjectFormData = {
   institutionType: "",
   country: "",
   city: "",
+  address: "",
   topics: [],
   studyPhase: "all",
   summary: "",
@@ -182,6 +184,7 @@ export function useProjectForm() {
         institutionType: state.data.institutionType || null,
         country: state.data.country,
         city: state.data.city,
+        address: state.data.address,
         topics: state.data.topics,
         studyPhase: state.data.studyPhase,
         links: state.data.links.filter((l) => l.url),
@@ -283,6 +286,7 @@ export function useProjectForm() {
             institutionType: (project.institutionType as string) || "",
             country: (project.country as string) || "",
             city: (project.city as string) || "",
+            address: (project.address as string) || "",
             topics: (project.topics as string[]) || [],
             studyPhase: (project.studyPhase as string) || "all",
             links: (project.links as { url: string; label: string }[]) || [],

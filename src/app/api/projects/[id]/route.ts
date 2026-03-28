@@ -101,6 +101,7 @@ export async function PUT(
       institutionType: data.institutionType ?? existing.institutionType,
       country: data.country ?? existing.country,
       city: data.city ?? existing.city,
+      address: data.address ?? existing.address,
       topics: data.topics ?? existing.topics,
       studyPhase: data.studyPhase ?? existing.studyPhase,
       links: data.links ?? existing.links,

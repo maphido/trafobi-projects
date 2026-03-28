@@ -1,15 +1,20 @@
 /**
- * Geocode a city+country to coordinates using the free Nominatim (OpenStreetMap) API.
- * Rate limit: 1 request/second on the public server. Fine for our use case (geocode on approval only).
+ * Geocode an address to coordinates using the free Nominatim (OpenStreetMap) API.
+ * Uses address + city + country for precise placement.
+ * Rate limit: 1 request/second on the public server.
  */
 export async function geocode(
   city: string,
-  countryCode: string
+  countryCode: string,
+  address?: string | null
 ): Promise<{ latitude: number; longitude: number } | null> {
   if (!city) return null;
 
+  // Build query: "address, city" for precision, fall back to just "city"
+  const query = address ? `${address}, ${city}` : city;
+
   const params = new URLSearchParams({
-    q: city,
+    q: query,
     countrycodes: countryCode.toLowerCase(),
     format: "json",
     limit: "1",
@@ -20,8 +25,8 @@ export async function geocode(
       `https://nominatim.openstreetmap.org/search?${params}`,
       {
         headers: {
-          // Nominatim requires a valid User-Agent identifying the application
-          "User-Agent": "TrafoBI-Projects/1.0 (projekte.transformative-bildung.org)",
+          "User-Agent":
+            "TrafoBI-Projects/1.0 (projekte.transformative-bildung.org)",
         },
       }
     );
@@ -37,7 +42,7 @@ export async function geocode(
       longitude: parseFloat(lon),
     };
   } catch {
-    console.error(`Geocoding failed for "${city}, ${countryCode}"`);
+    console.error(`Geocoding failed for "${query}, ${countryCode}"`);
     return null;
   }
 }

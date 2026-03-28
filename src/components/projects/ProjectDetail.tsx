@@ -42,6 +42,8 @@ export function ProjectDetail({ project, authorName, authorInstitution }: Props)
         {project.institutionName && (
           <span>
             {flag} {project.institutionName}
+            {project.address && `, ${project.address}`}
+            {project.city && `, ${project.city}`}
           </span>
         )}
         {project.institutionType && (

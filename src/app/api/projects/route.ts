@@ -37,6 +37,7 @@ export async function POST(request: NextRequest) {
       institutionType: data.institutionType || null,
       country: data.country,
       city: data.city,
+      address: data.address,
       topics: data.topics,
       studyPhase: data.studyPhase,
       links: data.links,
