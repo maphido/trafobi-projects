@@ -55,6 +55,7 @@ export const projects = pgTable(
     // Classification
     topics: text("topics").array().default([]),
     studyPhase: text("study_phase").default("all"), // 'bachelor' | 'master' | 'all'
+    projectPhase: text("project_phase").default("planning"), // 'planning' | 'development' | 'active' | 'completed'
 
     // Workflow
     status: text("status").notNull().default("draft"), // 'draft' | 'submitted' | 'approved' | 'rejected'

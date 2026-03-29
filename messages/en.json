@@ -33,6 +33,8 @@
     "allTypes": "All Types",
     "allTopics": "All Topics",
     "allPhases": "All Phases",
+    "filterByProjectPhase": "Project Status",
+    "allProjectPhases": "All Statuses",
     "loadMore": "Load More",
     "gridView": "Grid View",
     "mapView": "Map View"
@@ -86,6 +88,7 @@
     "address": "Address",
     "addressHint": "Street address (optional, for precise map placement)",
     "language": "Project Language",
+    "projectPhaseLabel": "Project Status",
     "topicsLabel": "Topics (select multiple)",
     "studyPhaseLabel": "Study Phase",
     "summary": "Summary",
@@ -119,7 +122,8 @@
     },
     "adminFeedback": "Admin Feedback",
     "editApproved": "Edit",
-    "editApprovedWarning": "Editing will send the project back for review. It will be temporarily hidden from the public directory."
+    "editApprovedWarning": "Editing will send the project back for review. It will be temporarily hidden from the public directory.",
+    "deleteConfirm": "Are you sure you want to delete this project? This action cannot be undone."
   },
   "admin": {
     "title": "Administration",
@@ -140,6 +144,12 @@
     "bachelor": "Bachelor",
     "master": "Master",
     "all": "All Phases"
+  },
+  "projectPhases": {
+    "planning": "Planning & Design",
+    "development": "In Development",
+    "active": "Active",
+    "completed": "Completed"
   },
   "footer": {
     "tagline": "An initiative of the Alliance for Transformative Education",

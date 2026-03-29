@@ -5,6 +5,8 @@ import { projects } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
 import { generateSlug } from "@/lib/utils";
 import { projectUpdateSchema } from "@/lib/validation";
+import { unlink } from "fs/promises";
+import { join } from "path";
 
 export async function GET(
   request: NextRequest,
@@ -106,6 +108,7 @@ export async function PUT(
       address: data.address ?? existing.address,
       topics: data.topics ?? existing.topics,
       studyPhase: data.studyPhase ?? existing.studyPhase,
+      projectPhase: data.projectPhase ?? existing.projectPhase,
       links: data.links ?? existing.links,
       status: newStatus,
       slug,
@@ -116,4 +119,36 @@ export async function PUT(
     .returning();
 
   return NextResponse.json(updated);
+}
+
+export async function DELETE(
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+  const session = await auth();
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const [project] = await db
+    .select()
+    .from(projects)
+    .where(and(eq(projects.id, id), eq(projects.authorId, session.user.id)))
+    .limit(1);
+
+  if (!project) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
+  // Delete thumbnail file if it exists
+  if (project.thumbnailUrl) {
+    const filePath = join(process.cwd(), project.thumbnailUrl.replace(/^\//, ""));
+    try { await unlink(filePath); } catch { /* file may be gone */ }
+  }
+
+  // Cascade deletes handle project_updates and project_media
+  await db.delete(projects).where(eq(projects.id, id));
+
+  return NextResponse.json({ ok: true });
 }

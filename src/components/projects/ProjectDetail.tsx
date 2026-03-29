@@ -35,6 +35,7 @@ export function ProjectDetail({
   const t = useTranslations("project");
   const tTypes = useTranslations("institutionTypes");
   const tPhases = useTranslations("studyPhases");
+  const tProjectPhases = useTranslations("projectPhases");
 
   const flag = COUNTRY_FLAGS[project.country || ""] || "";
   const links = (project.links || []) as { url: string; label: string }[];
@@ -66,6 +67,13 @@ export function ProjectDetail({
           {t("by")} {authorName}
           {authorInstitution && ` (${authorInstitution})`}
         </span>
+        {project.projectPhase && (
+          <span className={`rounded px-2 py-0.5 text-xs font-medium ${
+            { planning: "bg-amber-100 text-amber-700", development: "bg-blue-100 text-blue-700", active: "bg-green-100 text-green-700", completed: "bg-gray-100 text-gray-600" }[project.projectPhase] || "bg-gray-100 text-gray-600"
+          }`}>
+            {tProjectPhases(project.projectPhase as "planning")}
+          </span>
+        )}
         {project.institutionName && (
           <span>
             {flag} {project.institutionName}

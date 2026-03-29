@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { TOPICS, INSTITUTION_TYPES, STUDY_PHASES } from "./constants";
+import { TOPICS, INSTITUTION_TYPES, STUDY_PHASES, PROJECT_PHASES } from "./constants";
 
 // Reusable: URL must be http(s), no javascript: protocol
 const safeUrl = z
@@ -35,6 +35,9 @@ export const projectCreateSchema = z.object({
   studyPhase: z
     .enum(STUDY_PHASES as unknown as [string, ...string[]])
     .default("all"),
+  projectPhase: z
+    .enum(PROJECT_PHASES as unknown as [string, ...string[]])
+    .default("planning"),
   links: z
     .array(
       z.object({

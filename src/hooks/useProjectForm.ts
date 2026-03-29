@@ -19,6 +19,7 @@ export interface ProjectFormData {
   address: string;
   topics: string[];
   studyPhase: string;
+  projectPhase: string;
 
   // Step 3: Story
   summary: string;
@@ -69,6 +70,7 @@ const INITIAL_DATA: ProjectFormData = {
   address: "",
   topics: [],
   studyPhase: "all",
+  projectPhase: "planning",
   summary: "",
   description: "",
   impact: "",
@@ -189,6 +191,7 @@ export function useProjectForm() {
         address: state.data.address,
         topics: state.data.topics,
         studyPhase: state.data.studyPhase,
+        projectPhase: state.data.projectPhase,
         links: state.data.links.filter((l) => l.url),
       };
 
@@ -291,6 +294,7 @@ export function useProjectForm() {
             address: (project.address as string) || "",
             topics: (project.topics as string[]) || [],
             studyPhase: (project.studyPhase as string) || "all",
+            projectPhase: (project.projectPhase as string) || "planning",
             links: (project.links as { url: string; label: string }[]) || [],
             thumbnailUrl: (project.thumbnailUrl as string) || "",
           },

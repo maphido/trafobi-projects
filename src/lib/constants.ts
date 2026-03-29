@@ -97,6 +97,15 @@ export const INSTITUTION_TYPES = [
 
 export const STUDY_PHASES = ["bachelor", "master", "all"] as const;
 
+export const PROJECT_PHASES = [
+  "planning",
+  "development",
+  "active",
+  "completed",
+] as const;
+
+export type ProjectPhase = (typeof PROJECT_PHASES)[number];
+
 export const COUNTRY_FLAGS: Record<string, string> = {
   DE: "🇩🇪",
   AT: "🇦🇹",

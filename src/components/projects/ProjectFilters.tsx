@@ -9,6 +9,7 @@ import {
   TOPICS,
   TOPIC_LABELS,
   STUDY_PHASES,
+  PROJECT_PHASES,
 } from "@/lib/constants";
 
 export function ProjectFilters() {
@@ -16,6 +17,7 @@ export function ProjectFilters() {
   const t = useTranslations("home");
   const tTypes = useTranslations("institutionTypes");
   const tPhases = useTranslations("studyPhases");
+  const tProjectPhases = useTranslations("projectPhases");
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -109,6 +111,19 @@ export function ProjectFilters() {
         {STUDY_PHASES.map((phase) => (
           <option key={phase} value={phase}>
             {tPhases(phase)}
+          </option>
+        ))}
+      </select>
+
+      <select
+        value={searchParams.get("projectPhase") || ""}
+        onChange={(e) => setFilter("projectPhase", e.target.value)}
+        className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm focus:border-primary focus:outline-none"
+      >
+        <option value="">{t("allProjectPhases")}</option>
+        {PROJECT_PHASES.map((phase) => (
+          <option key={phase} value={phase}>
+            {tProjectPhases(phase)}
           </option>
         ))}
       </select>

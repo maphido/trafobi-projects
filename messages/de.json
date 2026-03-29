@@ -33,6 +33,8 @@
     "allTypes": "Alle Typen",
     "allTopics": "Alle Themen",
     "allPhases": "Alle Phasen",
+    "filterByProjectPhase": "Projektstatus",
+    "allProjectPhases": "Alle Projektstatus",
     "loadMore": "Mehr laden",
     "gridView": "Listenansicht",
     "mapView": "Kartenansicht"
@@ -86,6 +88,7 @@
     "address": "Adresse",
     "addressHint": "Straße und Hausnummer (optional, für genaue Kartenposition)",
     "language": "Projektsprache",
+    "projectPhaseLabel": "Projektstatus",
     "topicsLabel": "Themen (mehrere auswählen)",
     "studyPhaseLabel": "Studienphase",
     "summary": "Kurzbeschreibung",
@@ -119,7 +122,8 @@
     },
     "adminFeedback": "Feedback vom Admin",
     "editApproved": "Bearbeiten",
-    "editApprovedWarning": "Das Bearbeiten sendet das Projekt zurück zur Prüfung. Es wird vorübergehend aus dem Verzeichnis ausgeblendet."
+    "editApprovedWarning": "Das Bearbeiten sendet das Projekt zurück zur Prüfung. Es wird vorübergehend aus dem Verzeichnis ausgeblendet.",
+    "deleteConfirm": "Sind Sie sicher, dass Sie dieses Projekt löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden."
   },
   "admin": {
     "title": "Verwaltung",
@@ -140,6 +144,12 @@
     "bachelor": "Bachelor",
     "master": "Master",
     "all": "Alle Phasen"
+  },
+  "projectPhases": {
+    "planning": "Planung & Konzeption",
+    "development": "In Umsetzung",
+    "active": "Laufend",
+    "completed": "Abgeschlossen"
   },
   "footer": {
     "tagline": "Eine Initiative der Zukunftsallianz für Transformative Bildung",

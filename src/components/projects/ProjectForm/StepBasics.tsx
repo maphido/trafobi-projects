@@ -6,6 +6,7 @@ import {
   COUNTRIES,
   INSTITUTION_TYPES,
   STUDY_PHASES,
+  PROJECT_PHASES,
   TOPICS,
   TOPIC_LABELS,
 } from "@/lib/constants";
@@ -19,6 +20,7 @@ export function StepBasics({ data, setField }: Props) {
   const t = useTranslations("submit");
   const tTypes = useTranslations("institutionTypes");
   const tPhases = useTranslations("studyPhases");
+  const tProjectPhases = useTranslations("projectPhases");
   const locale = useLocale() as "de" | "en";
 
   function toggleTopic(topic: string) {
@@ -149,22 +151,42 @@ export function StepBasics({ data, setField }: Props) {
         />
       </div>
 
-      <div>
-        <label htmlFor="studyPhase" className="mb-1 block text-sm font-medium">
-          {t("studyPhaseLabel")}
-        </label>
-        <select
-          id="studyPhase"
-          value={data.studyPhase}
-          onChange={(e) => setField("studyPhase", e.target.value)}
-          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-        >
-          {STUDY_PHASES.map((phase) => (
-            <option key={phase} value={phase}>
-              {tPhases(phase)}
-            </option>
-          ))}
-        </select>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label htmlFor="projectPhase" className="mb-1 block text-sm font-medium">
+            {t("projectPhaseLabel")}
+          </label>
+          <select
+            id="projectPhase"
+            value={data.projectPhase}
+            onChange={(e) => setField("projectPhase", e.target.value)}
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          >
+            {PROJECT_PHASES.map((phase) => (
+              <option key={phase} value={phase}>
+                {tProjectPhases(phase)}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="studyPhase" className="mb-1 block text-sm font-medium">
+            {t("studyPhaseLabel")}
+          </label>
+          <select
+            id="studyPhase"
+            value={data.studyPhase}
+            onChange={(e) => setField("studyPhase", e.target.value)}
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          >
+            {STUDY_PHASES.map((phase) => (
+              <option key={phase} value={phase}>
+                {tPhases(phase)}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div>

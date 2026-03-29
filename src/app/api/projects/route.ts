@@ -40,6 +40,7 @@ export async function POST(request: NextRequest) {
       address: data.address,
       topics: data.topics,
       studyPhase: data.studyPhase,
+      projectPhase: data.projectPhase,
       links: data.links,
       status: "draft",
     })

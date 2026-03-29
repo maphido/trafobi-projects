@@ -5,10 +5,18 @@ import { Link } from "@/i18n/navigation";
 import type { Project } from "@/lib/db/schema";
 import { TOPIC_LABELS, COUNTRY_FLAGS } from "@/lib/constants";
 
+const PHASE_COLORS: Record<string, string> = {
+  planning: "bg-amber-100 text-amber-700",
+  development: "bg-blue-100 text-blue-700",
+  active: "bg-green-100 text-green-700",
+  completed: "bg-gray-100 text-gray-600",
+};
+
 export function ProjectCard({ project }: { project: Project }) {
   const locale = useLocale() as "de" | "en";
   const t = useTranslations("project");
   const tTypes = useTranslations("institutionTypes");
+  const tProjectPhases = useTranslations("projectPhases");
 
   const flag = COUNTRY_FLAGS[project.country || ""] || "";
 
@@ -42,6 +50,11 @@ export function ProjectCard({ project }: { project: Project }) {
         )}
 
         <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-gray-400">
+          {project.projectPhase && (
+            <span className={`rounded px-1.5 py-0.5 font-medium ${PHASE_COLORS[project.projectPhase] || PHASE_COLORS.planning}`}>
+              {tProjectPhases(project.projectPhase as "planning")}
+            </span>
+          )}
           {project.institutionName && (
             <span>
               {flag} {project.institutionName}

@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { Project } from "@/lib/db/schema";
@@ -15,6 +17,20 @@ const STATUS_COLORS: Record<string, string> = {
 export function DashboardContent({ projects }: { projects: Project[] }) {
   const t = useTranslations("dashboard");
   const tNav = useTranslations("nav");
+  const tCommon = useTranslations("common");
+  const router = useRouter();
+  const [deleting, setDeleting] = useState<string | null>(null);
+
+  async function handleDelete(projectId: string) {
+    if (!confirm(t("deleteConfirm"))) return;
+    setDeleting(projectId);
+    try {
+      const res = await fetch(`/api/projects/${projectId}`, { method: "DELETE" });
+      if (res.ok) router.refresh();
+    } finally {
+      setDeleting(null);
+    }
+  }
 
   if (projects.length === 0) {
     return (
@@ -107,6 +123,13 @@ export function DashboardContent({ projects }: { projects: Project[] }) {
                   </Link>
                 </>
               )}
+              <button
+                onClick={() => handleDelete(project.id)}
+                disabled={deleting === project.id}
+                className="rounded-lg border border-red-200 px-3 py-1.5 text-xs font-medium text-red-500 hover:bg-red-50 disabled:opacity-50"
+              >
+                {deleting === project.id ? "..." : tCommon("delete")}
+              </button>
             </div>
           </div>
         ))}
