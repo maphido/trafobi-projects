@@ -43,6 +43,7 @@ export function StepBasics({ data, setField }: Props) {
           type="text"
           value={data.title}
           onChange={(e) => setField("title", e.target.value)}
+          maxLength={200}
           required
           className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
         />
@@ -93,6 +94,7 @@ export function StepBasics({ data, setField }: Props) {
           type="text"
           value={data.institutionName}
           onChange={(e) => setField("institutionName", e.target.value)}
+          maxLength={200}
           className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
         />
       </div>
@@ -126,6 +128,7 @@ export function StepBasics({ data, setField }: Props) {
             type="text"
             value={data.city}
             onChange={(e) => setField("city", e.target.value)}
+            maxLength={100}
             className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
           />
         </div>
@@ -140,6 +143,7 @@ export function StepBasics({ data, setField }: Props) {
           type="text"
           value={data.address}
           onChange={(e) => setField("address", e.target.value)}
+          maxLength={200}
           placeholder={t("addressHint")}
           className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
         />

@@ -54,9 +54,9 @@ export async function PUT(
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
-  if (existing.status !== "draft" && existing.status !== "rejected") {
+  if (!["draft", "rejected", "approved"].includes(existing.status)) {
     return NextResponse.json(
-      { error: "Only draft or rejected projects can be edited" },
+      { error: "This project cannot be edited in its current status" },
       { status: 403 }
     );
   }
@@ -72,7 +72,9 @@ export async function PUT(
 
   const data = parsed.data;
   const isSubmitting = data._action === "submit";
-  const newStatus = isSubmitting ? "submitted" : existing.status;
+  const wasApproved = existing.status === "approved";
+  // Editing an approved project always sends it back for re-review
+  const newStatus = (isSubmitting || wasApproved) ? "submitted" : existing.status;
 
   let slug = existing.slug;
   if (isSubmitting && !slug) {
@@ -108,7 +110,7 @@ export async function PUT(
       status: newStatus,
       slug,
       updatedAt: new Date(),
-      ...(isSubmitting ? { submittedAt: new Date(), adminFeedback: null } : {}),
+      ...((isSubmitting || wasApproved) ? { submittedAt: new Date(), adminFeedback: null } : {}),
     })
     .where(eq(projects.id, id))
     .returning();

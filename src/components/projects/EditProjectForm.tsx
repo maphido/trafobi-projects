@@ -12,5 +12,5 @@ export function EditProjectForm({ project }: { project: Project }) {
     loadProject(project as unknown as Record<string, unknown>);
   }, [project, loadProject]);
 
-  return <ProjectForm />;
+  return <ProjectForm originalStatus={project.status} />;
 }

@@ -105,6 +105,24 @@ export const projectMedia = pgTable(
   (table) => [index("idx_media_project").on(table.projectId)]
 );
 
+export const projectUpdates = pgTable(
+  "project_updates",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    projectId: uuid("project_id")
+      .notNull()
+      .references(() => projects.id, { onDelete: "cascade" }),
+    authorId: uuid("author_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    content: text("content").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (table) => [index("idx_updates_project").on(table.projectId)]
+);
+
 // Type exports inferred from schema
 export type User = typeof users.$inferSelect;
 export type NewUser = typeof users.$inferInsert;
@@ -112,3 +130,5 @@ export type Project = typeof projects.$inferSelect;
 export type NewProject = typeof projects.$inferInsert;
 export type ProjectMedia = typeof projectMedia.$inferSelect;
 export type NewProjectMedia = typeof projectMedia.$inferInsert;
+export type ProjectUpdate = typeof projectUpdates.$inferSelect;
+export type NewProjectUpdate = typeof projectUpdates.$inferInsert;

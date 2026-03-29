@@ -88,13 +88,24 @@ export function DashboardContent({ projects }: { projects: Project[] }) {
                     : "Edit"}
                 </Link>
               )}
-              {project.status === "approved" && project.slug && (
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="rounded-lg border border-green-300 px-3 py-1.5 text-xs font-medium text-green-700 hover:bg-green-50"
-                >
-                  View
-                </Link>
+              {project.status === "approved" && (
+                <>
+                  {project.slug && (
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="rounded-lg border border-green-300 px-3 py-1.5 text-xs font-medium text-green-700 hover:bg-green-50"
+                    >
+                      View
+                    </Link>
+                  )}
+                  <Link
+                    href={`/dashboard/projects/${project.id}/edit`}
+                    className="rounded-lg border border-amber-300 px-3 py-1.5 text-xs font-medium text-amber-700 hover:bg-amber-50"
+                    title={t("editApprovedWarning")}
+                  >
+                    {t("editApproved")}
+                  </Link>
+                </>
               )}
             </div>
           </div>

@@ -50,6 +50,10 @@ export const projectUpdateSchema = projectCreateSchema.partial().extend({
   _action: z.enum(["submit"]).optional(),
 });
 
+export const projectUpdateContentSchema = z.object({
+  content: z.string().trim().min(1).max(5000),
+});
+
 export const adminReviewSchema = z.object({
   projectId: z.string().uuid(),
   action: z.enum(["approve", "reject"]),

@@ -10,8 +10,9 @@ import { StepStory } from "./StepStory";
 import { StepResults } from "./StepResults";
 import { StepLinks } from "./StepLinks";
 
-export function ProjectForm() {
+export function ProjectForm({ originalStatus }: { originalStatus?: string } = {}) {
   const t = useTranslations("submit");
+  const tDashboard = useTranslations("dashboard");
   const tCommon = useTranslations("common");
   const router = useRouter();
 
@@ -60,6 +61,12 @@ export function ProjectForm() {
         currentStep={step}
         onStepClick={(s) => dispatch({ type: "SET_STEP", step: s })}
       />
+
+      {originalStatus === "approved" && (
+        <div className="mb-4 rounded-lg bg-amber-50 border border-amber-200 p-3 text-sm text-amber-800">
+          {tDashboard("editApprovedWarning")}
+        </div>
+      )}
 
       {error && (
         <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-600">

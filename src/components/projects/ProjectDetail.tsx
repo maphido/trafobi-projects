@@ -6,14 +6,31 @@ import remarkGfm from "remark-gfm";
 import type { Project } from "@/lib/db/schema";
 import { TOPIC_LABELS, COUNTRY_FLAGS } from "@/lib/constants";
 import { Link } from "@/i18n/navigation";
+import { ProjectUpdates } from "./ProjectUpdates";
+import { AddUpdateForm } from "./AddUpdateForm";
+
+interface UpdateItem {
+  id: string;
+  content: string;
+  createdAt: string;
+  authorName: string | null;
+}
 
 interface Props {
   project: Project;
   authorName: string;
   authorInstitution?: string;
+  updates?: UpdateItem[];
+  isAuthor?: boolean;
 }
 
-export function ProjectDetail({ project, authorName, authorInstitution }: Props) {
+export function ProjectDetail({
+  project,
+  authorName,
+  authorInstitution,
+  updates = [],
+  isAuthor = false,
+}: Props) {
   const locale = useLocale() as "de" | "en";
   const t = useTranslations("project");
   const tTypes = useTranslations("institutionTypes");
@@ -145,6 +162,15 @@ export function ProjectDetail({ project, authorName, authorInstitution }: Props)
               </li>
             ))}
           </ul>
+        </section>
+      )}
+
+      {/* Project Updates */}
+      {(updates.length > 0 || isAuthor) && (
+        <section className="mt-10 border-t border-gray-200 pt-8">
+          <h2 className="mb-4 text-xl font-semibold">{t("updates")}</h2>
+          {isAuthor && <AddUpdateForm projectId={project.id} />}
+          <ProjectUpdates updates={updates} />
         </section>
       )}
     </article>

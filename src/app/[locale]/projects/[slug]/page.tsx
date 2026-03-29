@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
+import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { projects, users } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
+import { projects, users, projectUpdates } from "@/lib/db/schema";
+import { eq, desc } from "drizzle-orm";
 import { ProjectDetail } from "@/components/projects/ProjectDetail";
 import type { Metadata } from "next";
 
@@ -43,18 +44,41 @@ export default async function ProjectPage({ params }: Props) {
     notFound();
   }
 
-  // Fetch author info
-  const [author] = await db
-    .select({ fullName: users.fullName, institution: users.institution })
-    .from(users)
-    .where(eq(users.id, project.authorId))
-    .limit(1);
+  // Fetch author info, updates, and session in parallel
+  const [author, updates, session] = await Promise.all([
+    db
+      .select({ fullName: users.fullName, institution: users.institution })
+      .from(users)
+      .where(eq(users.id, project.authorId))
+      .limit(1)
+      .then(([a]) => a),
+    db
+      .select({
+        id: projectUpdates.id,
+        content: projectUpdates.content,
+        createdAt: projectUpdates.createdAt,
+        authorName: users.fullName,
+      })
+      .from(projectUpdates)
+      .leftJoin(users, eq(projectUpdates.authorId, users.id))
+      .where(eq(projectUpdates.projectId, project.id))
+      .orderBy(desc(projectUpdates.createdAt)),
+    auth(),
+  ]);
+
+  const isAuthor = session?.user?.id === project.authorId;
 
   return (
     <ProjectDetail
       project={project}
       authorName={author?.fullName || "Unknown"}
       authorInstitution={author?.institution || undefined}
+      updates={updates.map((u) => ({
+        ...u,
+        createdAt: u.createdAt.toISOString(),
+        authorName: u.authorName,
+      }))}
+      isAuthor={isAuthor}
     />
   );
 }

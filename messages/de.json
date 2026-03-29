@@ -64,7 +64,10 @@
     "challenges": "Herausforderungen",
     "tips": "Tipps für andere",
     "links": "Links & Ressourcen",
-    "media": "Medien"
+    "media": "Medien",
+    "updates": "Projekt-Updates",
+    "addUpdate": "Update veröffentlichen",
+    "updatePlaceholder": "Teilen Sie Neuigkeiten zu Ihrem Projekt..."
   },
   "submit": {
     "title": "Projekt einreichen",
@@ -86,15 +89,16 @@
     "topicsLabel": "Themen (mehrere auswählen)",
     "studyPhaseLabel": "Studienphase",
     "summary": "Kurzbeschreibung",
-    "summaryHint": "Eine kurze Zusammenfassung für die Projektübersicht (2-3 Sätze)",
+    "summaryHint": "Eine kurze Zusammenfassung für die Projektübersicht (2-3 Sätze, max. {max} Zeichen)",
     "descriptionLabel": "Die ganze Geschichte",
-    "descriptionHint": "Was ist das Projekt? Warum wurde es gestartet? Wie funktioniert es? (Markdown wird unterstützt)",
+    "descriptionHint": "Was ist das Projekt? Warum wurde es gestartet? Wie funktioniert es? (Markdown wird unterstützt, max. {max} Zeichen)",
     "impactLabel": "Wirkung & Ergebnisse",
-    "impactHint": "Welche Ergebnisse hat das Projekt erzielt?",
+    "impactHint": "Welche Ergebnisse hat das Projekt erzielt? (max. {max} Zeichen)",
     "challengesLabel": "Herausforderungen",
-    "challengesHint": "Welche Herausforderungen sind aufgetreten?",
+    "challengesHint": "Welche Herausforderungen sind aufgetreten? (max. {max} Zeichen)",
     "tipsLabel": "Tipps für andere",
-    "tipsHint": "Was würden Sie anderen empfehlen, die ein ähnliches Projekt starten möchten?",
+    "tipsHint": "Was würden Sie anderen empfehlen, die ein ähnliches Projekt starten möchten? (max. {max} Zeichen)",
+    "charCount": "{count}/{max} Zeichen",
     "linksLabel": "Externe Links",
     "addLink": "Link hinzufügen",
     "linkUrl": "URL",
@@ -109,7 +113,9 @@
       "approved": "Genehmigt",
       "rejected": "Abgelehnt"
     },
-    "adminFeedback": "Feedback vom Admin"
+    "adminFeedback": "Feedback vom Admin",
+    "editApproved": "Bearbeiten",
+    "editApprovedWarning": "Das Bearbeiten sendet das Projekt zurück zur Prüfung. Es wird vorübergehend aus dem Verzeichnis ausgeblendet."
   },
   "admin": {
     "title": "Verwaltung",

@@ -64,7 +64,10 @@
     "challenges": "Challenges",
     "tips": "Tips for Others",
     "links": "Links & Resources",
-    "media": "Media"
+    "media": "Media",
+    "updates": "Project Updates",
+    "addUpdate": "Post Update",
+    "updatePlaceholder": "Share what's new with your project..."
   },
   "submit": {
     "title": "Submit a Project",
@@ -86,15 +89,16 @@
     "topicsLabel": "Topics (select multiple)",
     "studyPhaseLabel": "Study Phase",
     "summary": "Summary",
-    "summaryHint": "A brief summary for the project overview (2-3 sentences)",
+    "summaryHint": "A brief summary for the project overview (2-3 sentences, max. {max} characters)",
     "descriptionLabel": "The Full Story",
-    "descriptionHint": "What is the project? Why was it started? How does it work? (Markdown supported)",
+    "descriptionHint": "What is the project? Why was it started? How does it work? (Markdown supported, max. {max} characters)",
     "impactLabel": "Impact & Results",
-    "impactHint": "What results has the project achieved?",
+    "impactHint": "What results has the project achieved? (max. {max} characters)",
     "challengesLabel": "Challenges",
-    "challengesHint": "What challenges have you encountered?",
+    "challengesHint": "What challenges have you encountered? (max. {max} characters)",
     "tipsLabel": "Tips for Others",
-    "tipsHint": "What would you recommend to others starting a similar project?",
+    "tipsHint": "What would you recommend to others starting a similar project? (max. {max} characters)",
+    "charCount": "{count}/{max} characters",
     "linksLabel": "External Links",
     "addLink": "Add Link",
     "linkUrl": "URL",
@@ -109,7 +113,9 @@
       "approved": "Approved",
       "rejected": "Rejected"
     },
-    "adminFeedback": "Admin Feedback"
+    "adminFeedback": "Admin Feedback",
+    "editApproved": "Edit",
+    "editApprovedWarning": "Editing will send the project back for review. It will be temporarily hidden from the public directory."
   },
   "admin": {
     "title": "Administration",
