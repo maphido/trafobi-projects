@@ -27,7 +27,7 @@ export default async function EditProjectPage({ params }: Props) {
     )
     .limit(1);
 
-  if (!project || !["draft", "rejected", "approved"].includes(project.status)) {
+  if (!project || !["draft", "rejected", "approved", "submitted"].includes(project.status)) {
     redirect("/dashboard");
   }
 

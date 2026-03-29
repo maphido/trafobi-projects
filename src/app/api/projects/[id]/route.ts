@@ -54,7 +54,7 @@ export async function PUT(
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
-  if (!["draft", "rejected", "approved"].includes(existing.status)) {
+  if (!["draft", "rejected", "approved", "submitted"].includes(existing.status)) {
     return NextResponse.json(
       { error: "This project cannot be edited in its current status" },
       { status: 403 }
