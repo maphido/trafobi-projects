@@ -19,6 +19,7 @@ export function ProjectForm({ originalStatus }: { originalStatus?: string } = {}
   const {
     data,
     step,
+    projectId,
     saving,
     submitting,
     error,
@@ -45,11 +46,13 @@ export function ProjectForm({ originalStatus }: { originalStatus?: string } = {}
     <StepLinks
       key={4}
       data={data}
+      projectId={projectId}
       onAddLink={() => dispatch({ type: "ADD_LINK" })}
       onRemoveLink={(index: number) => dispatch({ type: "REMOVE_LINK", index })}
       onUpdateLink={(index: number, field: "url" | "label", value: string) =>
         dispatch({ type: "UPDATE_LINK", index, field, value })
       }
+      onThumbnailChange={(url: string) => setField("thumbnailUrl", url)}
     />,
   ];
 

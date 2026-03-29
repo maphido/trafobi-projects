@@ -2,20 +2,37 @@
 
 import { useTranslations } from "next-intl";
 import type { ProjectFormData } from "@/hooks/useProjectForm";
+import { ThumbnailUpload } from "./ThumbnailUpload";
 
 interface Props {
   data: ProjectFormData;
+  projectId: string | null;
   onAddLink: () => void;
   onRemoveLink: (index: number) => void;
   onUpdateLink: (index: number, field: "url" | "label", value: string) => void;
+  onThumbnailChange: (url: string) => void;
 }
 
-export function StepLinks({ data, onAddLink, onRemoveLink, onUpdateLink }: Props) {
+export function StepLinks({
+  data,
+  projectId,
+  onAddLink,
+  onRemoveLink,
+  onUpdateLink,
+  onThumbnailChange,
+}: Props) {
   const t = useTranslations("submit");
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <h2 className="text-lg font-semibold">{t("stepLinks")}</h2>
+
+      <ThumbnailUpload
+        projectId={projectId}
+        thumbnailUrl={data.thumbnailUrl}
+        onUploaded={(url) => onThumbnailChange(url)}
+        onRemoved={() => onThumbnailChange("")}
+      />
 
       <div>
         <label className="mb-2 block text-sm font-medium">

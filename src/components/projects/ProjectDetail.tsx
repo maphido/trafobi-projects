@@ -48,6 +48,16 @@ export function ProjectDetail({
         &larr; {locale === "de" ? "Alle Projekte" : "All Projects"}
       </Link>
 
+      {project.thumbnailUrl && (
+        <div className="mb-6 overflow-hidden rounded-lg">
+          <img
+            src={project.thumbnailUrl}
+            alt={project.title}
+            className="w-full object-cover"
+          />
+        </div>
+      )}
+
       <h1 className="text-3xl font-bold leading-tight">{project.title}</h1>
 
       {/* Meta info */}

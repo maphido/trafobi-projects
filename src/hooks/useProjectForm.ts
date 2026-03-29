@@ -29,8 +29,9 @@ export interface ProjectFormData {
   challenges: string;
   tips: string;
 
-  // Step 5: Links
+  // Step 5: Links & Media
   links: { url: string; label: string }[];
+  thumbnailUrl: string;
 }
 
 interface FormState {
@@ -74,6 +75,7 @@ const INITIAL_DATA: ProjectFormData = {
   challenges: "",
   tips: "",
   links: [],
+  thumbnailUrl: "",
 };
 
 const INITIAL_STATE: FormState = {
@@ -290,6 +292,7 @@ export function useProjectForm() {
             topics: (project.topics as string[]) || [],
             studyPhase: (project.studyPhase as string) || "all",
             links: (project.links as { url: string; label: string }[]) || [],
+            thumbnailUrl: (project.thumbnailUrl as string) || "",
           },
         },
       });
