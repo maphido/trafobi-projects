@@ -23,6 +23,31 @@ const projectIcon = L.divIcon({
   popupAnchor: [0, -36],
 });
 
+// Custom cluster icon: large purple circle with white count text
+function createClusterIcon(cluster: L.MarkerCluster) {
+  const count = cluster.getChildCount();
+  const size = count < 10 ? 40 : count < 100 ? 48 : 56;
+  return L.divIcon({
+    html: `<div style="
+      width: ${size}px;
+      height: ${size}px;
+      background: #667eea;
+      border: 3px solid white;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: ${size < 48 ? 14 : 16}px;
+    ">${count}</div>`,
+    className: "",
+    iconSize: L.point(size, size),
+    iconAnchor: L.point(size / 2, size / 2),
+  });
+}
+
 export interface MapProject {
   id: string;
   slug: string | null;
@@ -58,7 +83,7 @@ export default function ProjectMap({ projects }: Props) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <MarkerClusterGroup chunkedLoading>
+      <MarkerClusterGroup chunkedLoading iconCreateFunction={createClusterIcon}>
         {projects.map((project) => (
           <Marker
             key={project.id}
