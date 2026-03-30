@@ -12,7 +12,6 @@ export function FormProgress({ currentStep, onStepClick }: FormProgressProps) {
   const t = useTranslations("submit");
 
   const steps = [
-    t("stepAbout"),
     t("stepBasics"),
     t("stepStory"),
     t("stepResults"),

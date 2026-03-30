@@ -15,6 +15,16 @@ export const registerSchema = z.object({
   fullName: z.string().trim().min(2).max(100),
 });
 
+export const profileUpdateSchema = z.object({
+  fullName: z.string().trim().min(2).max(100),
+  institution: z.string().max(200).nullish(),
+  country: z.string().max(10).nullish(),
+  bio: z.string().max(5000).nullish(),
+  experience: z.string().max(5000).nullish(),
+  expertise: z.array(z.string().max(100)).max(20).default([]),
+  availableAsExpert: z.boolean().default(false),
+});
+
 export const projectCreateSchema = z.object({
   title: z.string().min(1).max(200).default("Untitled Project"),
   language: z.enum(["de", "en"]).default("de"),
@@ -38,6 +48,7 @@ export const projectCreateSchema = z.object({
   projectPhase: z
     .enum(PROJECT_PHASES as unknown as [string, ...string[]])
     .default("planning"),
+  isResearch: z.boolean().default(false),
   links: z
     .array(
       z.object({

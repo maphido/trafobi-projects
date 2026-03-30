@@ -3,13 +3,7 @@
 import { useReducer, useEffect, useCallback } from "react";
 
 export interface ProjectFormData {
-  // Step 1: About You (read from session, editable)
-  authorName: string;
-  authorInstitution: string;
-  authorCountry: string;
-  authorBio: string;
-
-  // Step 2: Basics
+  // Step 1: Basics
   title: string;
   language: string;
   institutionName: string;
@@ -20,17 +14,18 @@ export interface ProjectFormData {
   topics: string[];
   studyPhase: string;
   projectPhase: string;
+  isResearch: boolean;
 
-  // Step 3: Story
+  // Step 2: Story
   summary: string;
   description: string;
 
-  // Step 4: Results
+  // Step 3: Results
   impact: string;
   challenges: string;
   tips: string;
 
-  // Step 5: Links & Media
+  // Step 4: Links & Media
   links: { url: string; label: string }[];
   thumbnailUrl: string;
 }
@@ -57,10 +52,6 @@ type FormAction =
   | { type: "UPDATE_LINK"; index: number; field: "url" | "label"; value: string };
 
 const INITIAL_DATA: ProjectFormData = {
-  authorName: "",
-  authorInstitution: "",
-  authorCountry: "",
-  authorBio: "",
   title: "",
   language: "de",
   institutionName: "",
@@ -71,6 +62,7 @@ const INITIAL_DATA: ProjectFormData = {
   topics: [],
   studyPhase: "all",
   projectPhase: "planning",
+  isResearch: false,
   summary: "",
   description: "",
   impact: "",
@@ -158,6 +150,7 @@ export function useProjectForm(initialProject?: Record<string, unknown>) {
           topics: (initialProject.topics as string[]) || [],
           studyPhase: (initialProject.studyPhase as string) || "all",
           projectPhase: (initialProject.projectPhase as string) || "planning",
+          isResearch: (initialProject.isResearch as boolean) || false,
           links: (initialProject.links as { url: string; label: string }[]) || [],
           thumbnailUrl: (initialProject.thumbnailUrl as string) || "",
         },
@@ -195,7 +188,7 @@ export function useProjectForm(initialProject?: Record<string, unknown>) {
   );
 
   const nextStep = useCallback(() => {
-    dispatch({ type: "SET_STEP", step: Math.min(state.step + 1, 4) });
+    dispatch({ type: "SET_STEP", step: Math.min(state.step + 1, 3) });
   }, [state.step]);
 
   const prevStep = useCallback(() => {
@@ -224,6 +217,7 @@ export function useProjectForm(initialProject?: Record<string, unknown>) {
         topics: state.data.topics,
         studyPhase: state.data.studyPhase,
         projectPhase: state.data.projectPhase,
+        isResearch: state.data.isResearch,
         links: state.data.links.filter((l) => l.url),
       };
 

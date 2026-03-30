@@ -16,6 +16,7 @@
     "home": "Projekte",
     "submit": "Projekt einreichen",
     "dashboard": "Meine Projekte",
+    "profile": "Profil",
     "admin": "Admin",
     "login": "Anmelden",
     "register": "Registrieren",
@@ -35,6 +36,9 @@
     "allPhases": "Alle Phasen",
     "filterByProjectPhase": "Projektstatus",
     "allProjectPhases": "Alle Projektstatus",
+    "allProjectTypes": "Alle Projektarten",
+    "researchOnly": "Forschungsprojekte",
+    "practiceOnly": "Praxisprojekte",
     "loadMore": "Mehr laden",
     "gridView": "Listenansicht",
     "mapView": "Kartenansicht"
@@ -69,7 +73,12 @@
     "media": "Medien",
     "updates": "Projekt-Updates",
     "addUpdate": "Update veröffentlichen",
-    "updatePlaceholder": "Teilen Sie Neuigkeiten zu Ihrem Projekt..."
+    "updatePlaceholder": "Teilen Sie Neuigkeiten zu Ihrem Projekt...",
+    "researchProject": "Forschungsprojekt",
+    "aboutAuthor": "Über den Autor / die Autorin",
+    "availableAsExpert": "Verfügbar als Expert:in",
+    "authorExperience": "Erfahrung mit transformativer Bildung",
+    "authorExpertise": "Expertise"
   },
   "submit": {
     "title": "Projekt einreichen",
@@ -109,7 +118,9 @@
     "linksLabel": "Externe Links",
     "addLink": "Link hinzufügen",
     "linkUrl": "URL",
-    "linkLabel": "Bezeichnung"
+    "linkLabel": "Bezeichnung",
+    "isResearchLabel": "Dies ist ein Forschungsprojekt",
+    "isResearchHint": "Markieren, wenn dieses Projekt einen Forschungsschwerpunkt hat"
   },
   "dashboard": {
     "title": "Meine Projekte",
@@ -150,6 +161,22 @@
     "development": "In Umsetzung",
     "active": "Laufend",
     "completed": "Abgeschlossen"
+  },
+  "profile": {
+    "title": "Mein Profil",
+    "fullName": "Name",
+    "institution": "Institution",
+    "country": "Land",
+    "bio": "Über mich",
+    "bioHint": "Erzählen Sie etwas über sich (max. 5000 Zeichen)",
+    "experience": "Erfahrung mit transformativer Bildung",
+    "experienceHint": "Beschreiben Sie Ihre Erfahrung im Bereich transformativer Bildung (max. 5000 Zeichen)",
+    "expertise": "Expertise & Fähigkeiten",
+    "expertiseHint": "Kommagetrennt eingeben, z.B. Curriculumsentwicklung, BNE, Hochschuldidaktik",
+    "availableAsExpert": "Ich bin als Expert:in für andere buchbar",
+    "availableAsExpertHint": "Zeigt anderen, dass Sie für Beratung oder Zusammenarbeit verfügbar sind",
+    "saved": "Profil gespeichert",
+    "saveError": "Fehler beim Speichern"
   },
   "footer": {
     "tagline": "Eine Initiative der Zukunftsallianz für Transformative Bildung",

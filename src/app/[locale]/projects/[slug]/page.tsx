@@ -47,7 +47,14 @@ export default async function ProjectPage({ params }: Props) {
   // Fetch author info, updates, and session in parallel
   const [author, updates, session] = await Promise.all([
     db
-      .select({ fullName: users.fullName, institution: users.institution })
+      .select({
+        fullName: users.fullName,
+        institution: users.institution,
+        bio: users.bio,
+        experience: users.experience,
+        expertise: users.expertise,
+        availableAsExpert: users.availableAsExpert,
+      })
       .from(users)
       .where(eq(users.id, project.authorId))
       .limit(1)
@@ -73,6 +80,14 @@ export default async function ProjectPage({ params }: Props) {
       project={project}
       authorName={author?.fullName || "Unknown"}
       authorInstitution={author?.institution || undefined}
+      authorProfile={author ? {
+        fullName: author.fullName,
+        institution: author.institution,
+        bio: author.bio,
+        experience: author.experience,
+        expertise: author.expertise,
+        availableAsExpert: author.availableAsExpert,
+      } : undefined}
       updates={updates.map((u) => ({
         ...u,
         createdAt: u.createdAt.toISOString(),

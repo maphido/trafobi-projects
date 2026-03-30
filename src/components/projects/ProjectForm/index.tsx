@@ -4,7 +4,6 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { useProjectForm } from "@/hooks/useProjectForm";
 import { FormProgress } from "./FormProgress";
-import { StepAboutYou } from "./StepAboutYou";
 import { StepBasics } from "./StepBasics";
 import { StepStory } from "./StepStory";
 import { StepResults } from "./StepResults";
@@ -45,10 +44,9 @@ export function ProjectForm({ originalStatus, initialProject }: ProjectFormProps
   }
 
   const steps = [
-    <StepAboutYou key={0} data={data} setField={setField} />,
-    <StepBasics key={1} data={data} setField={setField} />,
-    <StepStory key={2} data={data} setField={setField} />,
-    <StepResults key={3} data={data} setField={setField} />,
+    <StepBasics key={0} data={data} setField={setField} />,
+    <StepStory key={1} data={data} setField={setField} />,
+    <StepResults key={2} data={data} setField={setField} />,
     <StepLinks
       key={4}
       data={data}
@@ -113,7 +111,7 @@ export function ProjectForm({ originalStatus, initialProject }: ProjectFormProps
             {saving ? "..." : t("saveDraft")}
           </button>
 
-          {step < 4 ? (
+          {step < 3 ? (
             <button
               onClick={nextStep}
               className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90"

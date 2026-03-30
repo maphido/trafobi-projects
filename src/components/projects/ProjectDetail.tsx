@@ -16,10 +16,20 @@ interface UpdateItem {
   authorName: string | null;
 }
 
+interface AuthorProfile {
+  fullName: string;
+  institution: string | null;
+  bio: string | null;
+  experience: string | null;
+  expertise: string[] | null;
+  availableAsExpert: boolean;
+}
+
 interface Props {
   project: Project;
   authorName: string;
   authorInstitution?: string;
+  authorProfile?: AuthorProfile;
   updates?: UpdateItem[];
   isAuthor?: boolean;
 }
@@ -28,6 +38,7 @@ export function ProjectDetail({
   project,
   authorName,
   authorInstitution,
+  authorProfile,
   updates = [],
   isAuthor = false,
 }: Props) {
@@ -67,6 +78,11 @@ export function ProjectDetail({
           {t("by")} {authorName}
           {authorInstitution && ` (${authorInstitution})`}
         </span>
+        {project.isResearch && (
+          <span className="rounded bg-purple-100 px-2 py-0.5 text-xs font-medium text-purple-700">
+            {t("researchProject")}
+          </span>
+        )}
         {project.projectPhase && (
           <span className={`rounded px-2 py-0.5 text-xs font-medium ${
             { planning: "bg-amber-100 text-amber-700", development: "bg-blue-100 text-blue-700", active: "bg-green-100 text-green-700", completed: "bg-gray-100 text-gray-600" }[project.projectPhase] || "bg-gray-100 text-gray-600"
@@ -180,6 +196,44 @@ export function ProjectDetail({
               </li>
             ))}
           </ul>
+        </section>
+      )}
+
+      {/* About the Author */}
+      {authorProfile && (authorProfile.bio || authorProfile.experience || (authorProfile.expertise && authorProfile.expertise.length > 0)) && (
+        <section className="mt-10 border-t border-gray-200 pt-8">
+          <h2 className="mb-4 text-xl font-semibold">{t("aboutAuthor")}</h2>
+          <div className="space-y-3">
+            {authorProfile.availableAsExpert && (
+              <span className="inline-block rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
+                {t("availableAsExpert")}
+              </span>
+            )}
+            {authorProfile.bio && (
+              <p className="text-sm text-gray-600">{authorProfile.bio}</p>
+            )}
+            {authorProfile.experience && (
+              <div>
+                <h3 className="text-sm font-medium text-gray-700">{t("authorExperience")}</h3>
+                <p className="mt-1 text-sm text-gray-600">{authorProfile.experience}</p>
+              </div>
+            )}
+            {authorProfile.expertise && authorProfile.expertise.length > 0 && (
+              <div>
+                <h3 className="text-sm font-medium text-gray-700">{t("authorExpertise")}</h3>
+                <div className="mt-1 flex flex-wrap gap-1">
+                  {authorProfile.expertise.map((skill, i) => (
+                    <span
+                      key={i}
+                      className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </section>
       )}
 

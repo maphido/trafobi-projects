@@ -50,6 +50,11 @@ export function ProjectCard({ project }: { project: Project }) {
         )}
 
         <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-gray-400">
+          {project.isResearch && (
+            <span className="rounded bg-purple-100 px-1.5 py-0.5 font-medium text-purple-700">
+              {t("researchProject")}
+            </span>
+          )}
           {project.projectPhase && (
             <span className={`rounded px-1.5 py-0.5 font-medium ${PHASE_COLORS[project.projectPhase] || PHASE_COLORS.planning}`}>
               {tProjectPhases(project.projectPhase as "planning")}

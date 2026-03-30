@@ -6,6 +6,7 @@ import {
   integer,
   jsonb,
   real,
+  boolean,
   index,
 } from "drizzle-orm/pg-core";
 
@@ -17,6 +18,9 @@ export const users = pgTable("users", {
   institution: text("institution"),
   country: text("country"),
   bio: text("bio"),
+  experience: text("experience"),
+  expertise: text("expertise").array().default([]),
+  availableAsExpert: boolean("available_as_expert").notNull().default(false),
   avatarUrl: text("avatar_url"),
   role: text("role").notNull().default("user"), // 'user' | 'admin'
   createdAt: timestamp("created_at", { withTimezone: true })
@@ -56,6 +60,7 @@ export const projects = pgTable(
     topics: text("topics").array().default([]),
     studyPhase: text("study_phase").default("all"), // 'bachelor' | 'master' | 'all'
     projectPhase: text("project_phase").default("planning"), // 'planning' | 'development' | 'active' | 'completed'
+    isResearch: boolean("is_research").notNull().default(false),
 
     // Workflow
     status: text("status").notNull().default("draft"), // 'draft' | 'submitted' | 'approved' | 'rejected'

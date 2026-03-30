@@ -109,6 +109,7 @@ export async function PUT(
       topics: data.topics ?? existing.topics,
       studyPhase: data.studyPhase ?? existing.studyPhase,
       projectPhase: data.projectPhase ?? existing.projectPhase,
+      isResearch: data.isResearch ?? existing.isResearch,
       links: data.links ?? existing.links,
       status: newStatus,
       slug,

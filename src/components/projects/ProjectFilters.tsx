@@ -129,6 +129,16 @@ export function ProjectFilters() {
       </select>
 
       <select
+        value={searchParams.get("projectType") || ""}
+        onChange={(e) => setFilter("projectType", e.target.value)}
+        className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm focus:border-primary focus:outline-none"
+      >
+        <option value="">{t("allProjectTypes")}</option>
+        <option value="research">{t("researchOnly")}</option>
+        <option value="practice">{t("practiceOnly")}</option>
+      </select>
+
+      <select
         value={searchParams.get("lang") || ""}
         onChange={(e) => setFilter("lang", e.target.value)}
         className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm focus:border-primary focus:outline-none"

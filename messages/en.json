@@ -16,6 +16,7 @@
     "home": "Projects",
     "submit": "Submit Project",
     "dashboard": "My Projects",
+    "profile": "Profile",
     "admin": "Admin",
     "login": "Log In",
     "register": "Register",
@@ -35,6 +36,9 @@
     "allPhases": "All Phases",
     "filterByProjectPhase": "Project Status",
     "allProjectPhases": "All Statuses",
+    "allProjectTypes": "All Project Types",
+    "researchOnly": "Research Projects",
+    "practiceOnly": "Practice Projects",
     "loadMore": "Load More",
     "gridView": "Grid View",
     "mapView": "Map View"
@@ -69,7 +73,12 @@
     "media": "Media",
     "updates": "Project Updates",
     "addUpdate": "Post Update",
-    "updatePlaceholder": "Share what's new with your project..."
+    "updatePlaceholder": "Share what's new with your project...",
+    "researchProject": "Research Project",
+    "aboutAuthor": "About the Author",
+    "availableAsExpert": "Available as Expert",
+    "authorExperience": "Experience with Transformative Education",
+    "authorExpertise": "Expertise"
   },
   "submit": {
     "title": "Submit a Project",
@@ -109,7 +118,9 @@
     "linksLabel": "External Links",
     "addLink": "Add Link",
     "linkUrl": "URL",
-    "linkLabel": "Label"
+    "linkLabel": "Label",
+    "isResearchLabel": "This is a research project",
+    "isResearchHint": "Check if this project has a research focus"
   },
   "dashboard": {
     "title": "My Projects",
@@ -150,6 +161,22 @@
     "development": "In Development",
     "active": "Active",
     "completed": "Completed"
+  },
+  "profile": {
+    "title": "My Profile",
+    "fullName": "Name",
+    "institution": "Institution",
+    "country": "Country",
+    "bio": "About Me",
+    "bioHint": "Tell us about yourself (max. 5000 characters)",
+    "experience": "Experience with Transformative Education",
+    "experienceHint": "Describe your experience in transformative education (max. 5000 characters)",
+    "expertise": "Expertise & Skills",
+    "expertiseHint": "Enter comma-separated, e.g. Curriculum Design, ESD, Higher Education Pedagogy",
+    "availableAsExpert": "I am available as an expert for others to book",
+    "availableAsExpertHint": "Shows others that you are available for consulting or collaboration",
+    "saved": "Profile saved",
+    "saveError": "Failed to save"
   },
   "footer": {
     "tagline": "An initiative of the Alliance for Transformative Education",

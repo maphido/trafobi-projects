@@ -189,6 +189,22 @@ export function StepBasics({ data, setField }: Props) {
         </div>
       </div>
 
+      <div className="flex items-start gap-3 rounded-lg bg-gray-50 p-3">
+        <input
+          id="isResearch"
+          type="checkbox"
+          checked={data.isResearch}
+          onChange={(e) => setField("isResearch", e.target.checked)}
+          className="mt-0.5 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+        />
+        <div>
+          <label htmlFor="isResearch" className="block text-sm font-medium">
+            {t("isResearchLabel")}
+          </label>
+          <p className="mt-0.5 text-xs text-gray-500">{t("isResearchHint")}</p>
+        </div>
+      </div>
+
       <div>
         <label className="mb-2 block text-sm font-medium">
           {t("topicsLabel")}

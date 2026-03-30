@@ -60,9 +60,14 @@ export function Header() {
 
           {session ? (
             <div className="flex items-center gap-3">
-              <span className="hidden text-sm text-gray-600 sm:inline">
+              <Link
+                href="/profile"
+                className={`hidden text-sm font-medium transition-colors hover:text-primary sm:inline ${
+                  pathname === "/profile" ? "text-primary" : "text-gray-600"
+                }`}
+              >
                 {session.user.name}
-              </span>
+              </Link>
               <button
                 onClick={() => signOut()}
                 className="rounded-lg border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50"

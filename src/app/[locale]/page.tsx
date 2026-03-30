@@ -27,6 +27,7 @@ export default async function HomePage({ params, searchParams }: Props) {
   const phase = typeof sp.phase === "string" ? sp.phase : undefined;
   const lang = typeof sp.lang === "string" ? sp.lang : undefined;
   const projectPhase = typeof sp.projectPhase === "string" ? sp.projectPhase : undefined;
+  const projectType = typeof sp.projectType === "string" ? sp.projectType : undefined;
   const view = typeof sp.view === "string" ? sp.view : "grid";
   const page = typeof sp.page === "string" ? parseInt(sp.page, 10) || 1 : 1;
 
@@ -38,6 +39,8 @@ export default async function HomePage({ params, searchParams }: Props) {
   if (phase) conditions.push(eq(projects.studyPhase, phase));
   if (lang) conditions.push(eq(projects.language, lang));
   if (projectPhase) conditions.push(eq(projects.projectPhase, projectPhase));
+  if (projectType === "research") conditions.push(eq(projects.isResearch, true));
+  if (projectType === "practice") conditions.push(eq(projects.isResearch, false));
 
   const where = conditions.length === 1 ? conditions[0] : and(...conditions);
 
