@@ -10,11 +10,17 @@ import { StepStory } from "./StepStory";
 import { StepResults } from "./StepResults";
 import { StepLinks } from "./StepLinks";
 
-export function ProjectForm({ originalStatus }: { originalStatus?: string } = {}) {
+interface ProjectFormProps {
+  originalStatus?: string;
+  initialProject?: Record<string, unknown>;
+}
+
+export function ProjectForm({ originalStatus, initialProject }: ProjectFormProps = {}) {
   const t = useTranslations("submit");
   const tDashboard = useTranslations("dashboard");
   const tCommon = useTranslations("common");
   const router = useRouter();
+  const isEditing = !!initialProject;
 
   const {
     data,
@@ -29,7 +35,7 @@ export function ProjectForm({ originalStatus }: { originalStatus?: string } = {}
     saveDraft,
     submitForReview,
     dispatch,
-  } = useProjectForm();
+  } = useProjectForm(initialProject);
 
   async function handleSubmit() {
     const success = await submitForReview();
@@ -91,6 +97,14 @@ export function ProjectForm({ originalStatus }: { originalStatus?: string } = {}
         </button>
 
         <div className="flex gap-2">
+          {isEditing && (
+            <button
+              onClick={() => router.push("/dashboard")}
+              className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50"
+            >
+              {tCommon("cancel")}
+            </button>
+          )}
           <button
             onClick={saveDraft}
             disabled={saving}

@@ -133,11 +133,42 @@ function reducer(state: FormState, action: FormAction): FormState {
   }
 }
 
-export function useProjectForm() {
-  const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
+export function useProjectForm(initialProject?: Record<string, unknown>) {
+  const isEditing = !!initialProject;
 
-  // Load from localStorage on mount
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE, (initial) => {
+    if (initialProject) {
+      return {
+        ...initial,
+        projectId: initialProject.id as string,
+        data: {
+          ...INITIAL_DATA,
+          title: (initialProject.title as string) || "",
+          language: (initialProject.language as string) || "de",
+          summary: (initialProject.summary as string) || "",
+          description: (initialProject.description as string) || "",
+          impact: (initialProject.impact as string) || "",
+          challenges: (initialProject.challenges as string) || "",
+          tips: (initialProject.tips as string) || "",
+          institutionName: (initialProject.institutionName as string) || "",
+          institutionType: (initialProject.institutionType as string) || "",
+          country: (initialProject.country as string) || "",
+          city: (initialProject.city as string) || "",
+          address: (initialProject.address as string) || "",
+          topics: (initialProject.topics as string[]) || [],
+          studyPhase: (initialProject.studyPhase as string) || "all",
+          projectPhase: (initialProject.projectPhase as string) || "planning",
+          links: (initialProject.links as { url: string; label: string }[]) || [],
+          thumbnailUrl: (initialProject.thumbnailUrl as string) || "",
+        },
+      };
+    }
+    return initial;
+  });
+
+  // Load from localStorage on mount (only for new projects, not editing)
   useEffect(() => {
+    if (isEditing) return;
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {
@@ -147,13 +178,14 @@ export function useProjectForm() {
         // Ignore invalid saved state
       }
     }
-  }, []);
+  }, [isEditing]);
 
-  // Persist to localStorage on change
+  // Persist to localStorage on change (only for new projects)
   useEffect(() => {
+    if (isEditing) return;
     const toSave = { data: state.data, step: state.step, projectId: state.projectId };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
-  }, [state.data, state.step, state.projectId]);
+  }, [state.data, state.step, state.projectId, isEditing]);
 
   const setField = useCallback(
     (field: keyof ProjectFormData, value: unknown) => {
@@ -272,38 +304,6 @@ export function useProjectForm() {
     dispatch({ type: "LOAD_STATE", state: INITIAL_STATE });
   }, []);
 
-  const loadProject = useCallback(
-    (project: Record<string, unknown>) => {
-      dispatch({
-        type: "LOAD_STATE",
-        state: {
-          projectId: project.id as string,
-          data: {
-            ...INITIAL_DATA,
-            title: (project.title as string) || "",
-            language: (project.language as string) || "de",
-            summary: (project.summary as string) || "",
-            description: (project.description as string) || "",
-            impact: (project.impact as string) || "",
-            challenges: (project.challenges as string) || "",
-            tips: (project.tips as string) || "",
-            institutionName: (project.institutionName as string) || "",
-            institutionType: (project.institutionType as string) || "",
-            country: (project.country as string) || "",
-            city: (project.city as string) || "",
-            address: (project.address as string) || "",
-            topics: (project.topics as string[]) || [],
-            studyPhase: (project.studyPhase as string) || "all",
-            projectPhase: (project.projectPhase as string) || "planning",
-            links: (project.links as { url: string; label: string }[]) || [],
-            thumbnailUrl: (project.thumbnailUrl as string) || "",
-          },
-        },
-      });
-    },
-    []
-  );
-
   return {
     ...state,
     setField,
@@ -312,7 +312,6 @@ export function useProjectForm() {
     saveDraft,
     submitForReview,
     resetForm,
-    loadProject,
     dispatch,
   };
 }
