@@ -24,7 +24,8 @@ const projectIcon = L.divIcon({
 });
 
 // Custom cluster icon: large purple circle with white count text
-function createClusterIcon(cluster: L.MarkerCluster) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function createClusterIcon(cluster: any) {
   const count = cluster.getChildCount();
   const size = count < 10 ? 40 : count < 100 ? 48 : 56;
   return L.divIcon({
